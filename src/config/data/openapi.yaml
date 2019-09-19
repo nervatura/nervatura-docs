@@ -3,7 +3,7 @@ info:
   title: Nervatura OPEN API
   version: 1.0.0
   description: >-
-    The **Nervatura REST API** is based on <a href="/#/model">Nervatura Object Model</a> specification. Ensures direct 
+    The **Nervatura REST API** is based on **Nervatura Object Model** specification. Ensures direct 
     access to Nervatura databases at management level. With its help you can send and receive data without 
     knowing the exact location and type of the database but you have the possibility also to use 
     database-specific features.
