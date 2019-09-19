@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  background-color: #D2B48C;
+  color: #3b4151;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.swagger-ui {
+  font-family: 'Droid Sans' !important;
+  color: #3b4151;
+  background-color: #FDF5E6;
+}
+
+#main {
+  margin-top:38px;
+  width: 100%;
+}
+
+#topnav {
+  z-index:4;
+  font-weight: bold;
+}
+
+#topnav .w3-btn {
+  outline-style: none !important;
+  outline: none !important;
+  outline: 0 !important;
+  box-shadow:none!important;
+}
+
+.renderedMarkdown img {
+  height: 200px;
+}
+
+.bold, label, button {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #4990e2;
+}
+
+.lnk {
+  color: #4990e2;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.lnk:hover {
+  color: cadetblue;
+}
+
+.code {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  border-radius: 4px;
+  background: #41444e;
+  overflow-wrap: break-word;
+  color: #fff;
+}

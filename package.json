@@ -1,0 +1,65 @@
+{
+  "name": "nervatura-docs",
+  "version": "1.0.0",
+  "description": "Nervatura Docs",
+  "keywords": [
+    "business management",
+    "open-data",
+    "customer",
+    "employee",
+    "product",
+    "invoice",
+    "order",
+    "offer",
+    "stock control",
+    "payment",
+    "inventory",
+    "rental",
+    "project",
+    "express",
+    "PDF reporting"
+  ],
+  "author": "Csaba Kappel <kappel.csaba@gmail.com> (http://nervatura.com)",
+  "license": "LGPL-3.0",
+  "homepage": ".",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nervatura/nervatura-docs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nervatura/nervatura/issues"
+  },
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.1.1",
+    "swagger-ui-react": "^3.23.6",
+    "w3-css": "^4.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "postbuild": "rm -rf docs && mv build docs"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.2"
+  }
+}

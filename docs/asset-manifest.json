@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "./static/css/main.17fe65d6.chunk.css",
+    "main.js": "./static/js/main.598a8868.chunk.js",
+    "runtime~main.js": "./static/js/runtime~main.d66fbd0d.js",
+    "static/css/2.03490e4e.chunk.css": "./static/css/2.03490e4e.chunk.css",
+    "static/js/2.1a1ffc8b.chunk.js": "./static/js/2.1a1ffc8b.chunk.js",
+    "index.html": "./index.html",
+    "precache-manifest.3c44adfad4d5f0fb223f63e838f81ca2.js": "./precache-manifest.3c44adfad4d5f0fb223f63e838f81ca2.js",
+    "service-worker.js": "./service-worker.js",
+    "static/media/fonts.css": "./static/media/droid-sans-v6-latin-regular.ae8b5d5f.woff2",
+    "static/media/all.css": "./static/media/fa-solid-900.d6d8d5da.woff2",
+    "static/media/nom.png": "./static/media/nom.37f79dfa.png",
+    "static/media/nom_rel.png": "./static/media/nom_rel.3e1f5791.png",
+    "static/media/nom_uio.png": "./static/media/nom_uio.dde1319e.png",
+    "static/media/ntura_white.jpg": "./static/media/ntura_white.e9c63630.jpg",
+    "static/media/trans.png": "./static/media/trans.15457a5e.png"
+  }
+}
