@@ -159,7 +159,7 @@ function MainPage() {
             style={{paddingLeft:6}} >Nervatura Client</span>
           </div>
           {(faq === "client")?<div className="w3-padding">
-            <div>Free to use Nervatura Business Management Application. <span className="bold">Built-in Help</span> related to a certain function 
+            <div>Free to use Nervatura PWA Client. <span className="bold">Built-in Help</span> related to a certain function 
               is easily accessible from all interfaces of the program. The program includes a built in <span 
               className="bold">Report Editor</span> which provides the possibility to modify the existing 
               Nervatura Report templates or based on these create new ones.</div>
