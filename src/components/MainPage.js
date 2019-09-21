@@ -97,6 +97,7 @@ function MainPage() {
             <div><span className="bold">The application uses environment variables to set configuration options.</span> It will 
               be read from the app_dir/.env file (development mode). Set the environment variables as needed!
             </div>
+            <div>Other configuration files: app.yaml (App Engine), manifest.yml (IBM Cloud), node-settings.config (AWS) or Azure CLI.</div>
             <div className="w3-section code" >
               $ npm run dev
             </div>
@@ -119,10 +120,21 @@ function MainPage() {
                 className="italic" >NT_API_KEY</span> and <span 
                 className="italic" >NT_ALIAS_[ALIASNAME]</span>. Connection string form: <span 
                 className="italic" >adapter://user:password@host/database</span></div>
-              <div>For example: 
+              <div>Supported database adapters: <span className="italic" >sqlite3, postgres, mysql, mssql</span></div>
+              <div>For examples: 
                 <ul style={{marginTop:0}}>
-                  <li><span className="italic" >NT_ALIAS_DEMO=sqlite3://data/database/demo.db</span></li>
-                  <li><span className="italic" >NT_ALIAS_PGDEMO=postgres://postgres:admin@localhost:5432/nervatura</span></li>
+                  <li><span className="italic w3-small" >NT_ALIAS_DEMO=sqlite3://data/database/demo.db</span></li>
+                  <li><span className="italic w3-small" >NT_ALIAS_PGDEMO=postgres://postgres:admin@localhost:5432/nervatura</span></li>
+                  <li><span className="italic w3-small" >NT_ALIAS_MYDEMO=mysql://root:admin@localhost:3306/nervatura</span></li>
+                  <li><span className="italic w3-small" >NT_ALIAS_MSDEMO=mssql://sa:admin@localhost:1433/nervatura</span></li>
+                  <li><div>App Engine:</div>
+                    <div className="italic w3-small">NT_ALIAS_AEPG=postgres://[YOUR_SQL_USER]:[YOUR_SQL_PASSWORD]@/cloudsql/[YOUR_INSTANCE_CONNECTION_NAME]/[YOUR_SQL_DATABASE]</div>
+                  </li>
+                  <li><div>Azure:</div>
+                    <div className="italic w3-small">NT_ALIAS_AZMY=mysql://[ADMIN_NAME]@[SERVER_NAME]:[ADMIN_PASSWORD]@[SERVER_NAME].mysql.database.azure.com:3306/nervatura</div>
+                    <div className="italic w3-small">NT_ALIAS_AZPG=postgres://[ADMIN_NAME]@[SERVER_NAME]:[ADMIN_PASSWORD]@[SERVER_NAME].postgres.database.azure.com:5432/postgres</div>
+                    <div className="italic w3-small">NT_ALIAS_AZMS=mssql://[ADMIN_NAME]@[SERVER_NAME]:[ADMIN_PASSWORD]@[SERVER_NAME].database.windows.net:1433/nervatura</div>
+                  </li>
                 </ul>
               </div>
               <div className="w3-margin-top">The SQLite databases are created automatically. Other types of databases must 
