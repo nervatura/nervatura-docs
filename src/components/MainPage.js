@@ -222,10 +222,10 @@ function MainPage() {
                 className="italic" >NT_HASHTABLE</span>).
               </div>
               <div className="w3-margin-top">External authorization</div>
-              <div>Built-in <a 
+              <div>Built-in JWK x509 Endpoint verification (see more <a 
                 href="https://firebase.google.com/docs/auth/admin/verify-id-tokens" 
-                target="_blank" rel="noopener noreferrer" >Firebase token verification</a>. Google 
-                public keys URL environment variable: <span className="italic" >NT_CERT_GOOGLE</span></div>
+                target="_blank" rel="noopener noreferrer" >Firebase token </a>). x509 
+                public keys URL environment variable: <span className="italic" >NT_JWK_X509</span></div>
             </div>
 
             <div className="bold italic w3-margin-top" >Customize the appearance</div>

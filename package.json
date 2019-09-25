@@ -1,6 +1,6 @@
 {
   "name": "nervatura-docs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Nervatura Docs",
   "keywords": [
     "business management",
@@ -32,9 +32,9 @@
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1",
-    "swagger-ui-react": "^3.23.6",
+    "react-router-dom": "^5.1.0",
+    "react-scripts": "3.1.2",
+    "swagger-ui-react": "^3.23.11",
     "w3-css": "^4.1.0"
   },
   "scripts": {
@@ -60,6 +60,6 @@
     ]
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.10.2"
+    "@fortawesome/fontawesome-free": "^5.11.2"
   }
 }
