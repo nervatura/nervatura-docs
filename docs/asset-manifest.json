@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "./static/css/main.17fe65d6.chunk.css",
-    "main.js": "./static/js/main.eb794372.chunk.js",
+    "main.js": "./static/js/main.f9db7222.chunk.js",
     "runtime-main.js": "./static/js/runtime-main.2117e992.js",
     "static/css/2.3ef1af8d.chunk.css": "./static/css/2.3ef1af8d.chunk.css",
     "static/js/2.ab61f2ff.chunk.js": "./static/js/2.ab61f2ff.chunk.js",
     "index.html": "./index.html",
-    "precache-manifest.b1c8baf8cfaa50633b83bdb97a1e0d7a.js": "./precache-manifest.b1c8baf8cfaa50633b83bdb97a1e0d7a.js",
+    "precache-manifest.576f797b7d93591633968fb8c211d043.js": "./precache-manifest.576f797b7d93591633968fb8c211d043.js",
     "service-worker.js": "./service-worker.js",
     "static/media/fonts.css": "./static/media/droid-sans-v6-latin-regular.ae8b5d5f.woff2",
     "static/media/all.css": "./static/media/fa-solid-900.c2801fb4.svg",
