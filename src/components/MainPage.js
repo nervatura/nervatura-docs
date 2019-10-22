@@ -104,9 +104,25 @@ function MainPage() {
             <div>and <a href="http://localhost:8080/" target="_blank" rel="noopener noreferrer" >http://localhost:8080/</a></div>
           </div>:null}
 
-          <div className="bold w3-margin-top" ><i className="fas fa-caret-right"></i><span 
+          <div className="lnk w3-margin-top" onClick={()=>setFaq((faq === "go")?"":"go")} ><i 
+            className={"fas fa-caret-"+((faq === "go")?"down":"right")}></i><span 
             style={{paddingLeft:6}} >Quick Start with Go</span>
           </div>
+          {(faq === "go")?<div className="w3-padding">
+            <div>To install the package on your system, run</div>
+            <div className="w3-section code" >
+              $ go get github.com/nervatura/nervatura-go
+            </div>
+            <div>Later, to receive updates, run</div>
+            <div className="w3-section code" >
+              $ go get -u -v github.com/nervatura/nervatura-go/...
+            </div>
+            <div>Compile and run the demo/server/app.go file and open <a href="http://localhost:8080/" 
+              target="_blank" rel="noopener noreferrer" >http://localhost:8080/</a></div>
+            <div className="w3-margin-top">More golang examples: test/api_test.go, test/nervastore_test.go, test/npi_test.go</div>
+            <div>Go documentation: <a href="https://godoc.org/github.com/nervatura/nervatura-go" 
+              target="_blank" rel="noopener noreferrer" >Nervatura Godoc</a></div>
+          </div>:null}
 
           <div className="lnk w3-margin-top" onClick={()=>setFaq((faq === "admin")?"":"admin")} ><i 
             className={"fas fa-caret-"+((faq === "recipes")?"down":"right")}></i><span 

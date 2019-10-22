@@ -40,7 +40,7 @@ info:
           
         * `value` Field value
         
-    For more examples, see the description and the [demo.js](https://raw.githubusercontent.com/nervatura/nervatura/master/lib/demo.js) file. All examples can be tested in the demo database!
+    For more examples, see the description or the [demo.js](https://raw.githubusercontent.com/nervatura/nervatura/master/lib/demo.js) and [demo.go](https://raw.githubusercontent.com/nervatura/nervatura-go/master/demo.go) files. All examples can be tested in the demo database!
 
   termsOfService: "https://nervatura.com/#/terms"
   contact:
