@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.17fe65d6.chunk.css",
-    "main.js": "./static/js/main.06f968f9.chunk.js",
-    "runtime-main.js": "./static/js/runtime-main.b9132ca0.js",
-    "static/css/2.1f1c8a98.chunk.css": "./static/css/2.1f1c8a98.chunk.css",
-    "static/js/2.db555926.chunk.js": "./static/js/2.db555926.chunk.js",
+    "main.css": "./static/css/main.aa5e8dd1.chunk.css",
+    "main.js": "./static/js/main.74658fab.chunk.js",
+    "runtime-main.js": "./static/js/runtime-main.bb196237.js",
+    "static/css/2.58cbc3b6.chunk.css": "./static/css/2.58cbc3b6.chunk.css",
+    "static/js/2.aee0cd73.chunk.js": "./static/js/2.aee0cd73.chunk.js",
     "index.html": "./index.html",
-    "precache-manifest.1995e0a3b44bbf44ec69c492d11a980f.js": "./precache-manifest.1995e0a3b44bbf44ec69c492d11a980f.js",
+    "precache-manifest.69451cf9575ee24cb24a2f365d4157a4.js": "./precache-manifest.69451cf9575ee24cb24a2f365d4157a4.js",
     "service-worker.js": "./service-worker.js",
+    "static/js/2.aee0cd73.chunk.js.LICENSE.txt": "./static/js/2.aee0cd73.chunk.js.LICENSE.txt",
     "static/media/fonts.css": "./static/media/droid-sans-v6-latin-regular.ae8b5d5f.woff2",
-    "static/media/all.css": "./static/media/fa-solid-900.c2801fb4.svg",
+    "static/media/all.css": "./static/media/fa-solid-900.ec763292.svg",
     "static/media/nom.png": "./static/media/nom.37f79dfa.png",
     "static/media/nom_rel.png": "./static/media/nom_rel.3e1f5791.png",
     "static/media/nom_uio.png": "./static/media/nom_uio.dde1319e.png",
@@ -17,10 +18,10 @@
     "static/media/trans.png": "./static/media/trans.15457a5e.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.b9132ca0.js",
-    "static/css/2.1f1c8a98.chunk.css",
-    "static/js/2.db555926.chunk.js",
-    "static/css/main.17fe65d6.chunk.css",
-    "static/js/main.06f968f9.chunk.js"
+    "static/js/runtime-main.bb196237.js",
+    "static/css/2.58cbc3b6.chunk.css",
+    "static/js/2.aee0cd73.chunk.js",
+    "static/css/main.aa5e8dd1.chunk.css",
+    "static/js/main.74658fab.chunk.js"
   ]
 }
