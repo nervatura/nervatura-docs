@@ -152,7 +152,7 @@
           "auth"
         ],
         "summary": "Logs in user by username and password",
-        "description": "Employee `username` or Customer `custnumber` (email or phone number). Returns a access token.",
+        "description": "Employee `username` or Customer `custnumber` (email or phone number). Returns a access token and the type of database.",
         "requestBody": {
           "required": true,
           "content": {
@@ -189,6 +189,9 @@
                   "type": "object",
                   "properties": {
                     "token": {
+                      "type": "string"
+                    },
+                    "engine": {
                       "type": "string"
                     }
                   }
