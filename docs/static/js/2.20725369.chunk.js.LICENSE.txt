@@ -7,7 +7,7 @@ object-assign
 /*!
        * The buffer module from node.js, for the browser.
        *
-       * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+       * @author   Feross Aboukhadijeh <http://feross.org>
        * @license  MIT
        */
 
@@ -45,16 +45,6 @@ object-assign
  */
 
 /*!
- * Autolinker.js
- * 0.28.1
- *
- * Copyright(c) 2016 Gregory Jacobs <greg@greg-jacobs.com>
- * MIT License
- *
- * https://github.com/gregjacobs/Autolinker.js
- */
-
-/*!
  * The buffer module from node.js, for the browser.
  *
  * @author   Feross Aboukhadijeh <http://feross.org>
@@ -84,6 +74,17 @@ object-assign
 /*! @license DOMPurify | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.0.8/LICENSE */
 
 /*! https://mths.be/punycode v1.4.1 by @mathias */
+
+/*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/**
+ * Prism: Lightweight, robust, elegant syntax highlighting
+ *
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @author Lea Verou <https://lea.verou.me>
+ * @namespace
+ * @public
+ */
 
 /** @license React v0.19.1
  * scheduler.production.min.js
