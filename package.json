@@ -1,6 +1,6 @@
 {
   "name": "nervatura-docs",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "description": "Nervatura Docs",
   "keywords": [
     "business management",
@@ -21,7 +21,6 @@
   ],
   "author": "Csaba Kappel <kappel.csaba@gmail.com> (http://nervatura.com)",
   "license": "LGPL-3.0",
-  "homepage": ".",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nervatura/nervatura-docs.git"
@@ -29,27 +28,28 @@
   "bugs": {
     "url": "https://github.com/nervatura/nervatura/issues"
   },
-  "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "swagger-ui-react": "3.32.5",
-    "w3-css": "^4.1.0"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postbuild": "rm -rf docs && mv build docs"
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "serve": "docusaurus serve",
+    "clear": "docusaurus clear"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "@docusaurus/core": "2.0.0-alpha.70",
+    "@docusaurus/preset-classic": "2.0.0-alpha.70",
+    "@mdx-js/react": "^1.6.22",
+    "clsx": "^1.1.1",
+    "docusaurus2-dotenv": "^1.4.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "swagger-ui-react": "^3.39.0"
   },
   "browserslist": {
     "production": [
-      ">0.2%",
+      ">0.5%",
       "not dead",
       "not op_mini all"
     ],
@@ -58,8 +58,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.14.0"
   }
 }

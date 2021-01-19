@@ -1,0 +1,22 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.infoRow {
+  margin: 12px 0px;
+}
+
+.contactCol {
+  font-size: 12px;
+}
+
+.paypal {
+  text-align: right;
+}
+
+.section {
+  margin: 16px 0px;
+}
