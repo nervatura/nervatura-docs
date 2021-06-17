@@ -3,7 +3,7 @@ export const conf = {
   mail_nervatura: "info@nervatura.com",
   url_nervatura_home: "http://nervatura.com",
   url_licenses: "http://www.gnu.org/licenses/lgpl.html",
-  donate_id: "79GUS8N3AC9T8",
+  donate_id: "SULBGMAACJWLU",
   page_orientation: [
     ["portrait", "Portrait"],
     ["landscape", "Landscape"]

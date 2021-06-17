@@ -8,7 +8,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import { conf } from '../config/conf'
 import styles from './styles.module.css';
 
-**Nervatura** is a business management framework. It can handle any type of business related information, starting from customer details, up to shipping, stock or payment information.
+## Overview
+
+Nervatura is a business management framework based on **open-data principle**. It can handle any type of business related information, starting from customer details, up to shipping, stock or payment information. Developed as open-source project and can be used freely under the scope of [LGPLv3 License](http://www.gnu.org/licenses/lgpl.html).
 
 <div className={`${"row"} ${styles.infoRow}`}>
   <div className="col">
@@ -22,26 +24,17 @@ import styles from './styles.module.css';
     </ul>
   </div>
   <div className={`${"col"} ${styles.contactCol}`}>
-    <div className="row">
-      <div className="col col--3" >
-        <a href={conf.url_nervatura_home} target="_blank" rel="noopener noreferrer"
-           title="Nervatura Homepage" >
-           <img src={useBaseUrl('img/ntura_white.jpg')} alt="logo" />
-        </a>
-      </div>
-      <div className="col col--9" style={{paddingTop:6}}>
-        Developed as open-source project and can be used freely under the scope of <a 
-          href={conf.url_licenses} target="_blank"
-          rel="noopener noreferrer" className="lnk">LGPLv3 License</a>.
-      </div>
+    <div className={`${styles.paypal}`}>
+      <a href={conf.url_nervatura_home} target="_blank" rel="noopener noreferrer"
+          title="Nervatura Homepage" >
+          <img src={useBaseUrl('img/ntura_white.jpg')} alt="logo" className={`${styles.logo}`} />
+      </a>
     </div>
     <div className={`${styles.paypal}`}>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_s-xclick" />
+      <form action="https://www.paypal.com/donate" method="post" target="_top">
         <input type="hidden" name="hosted_button_id" value={conf.donate_id} />
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" 
-          name="submit" alt="PayPal - The safer, easier way to pay online!" />
-        <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+        <img alt="" border="0" src="https://www.paypal.com/en_FI/i/scr/pixel.gif" width="1" height="1" />
       </form>
     </div>
   </div>
@@ -49,116 +42,183 @@ import styles from './styles.module.css';
 
 The framework is based on Nervatura Object [**MODEL**](model) specification. It is a general **open-data model**, which can store all information generated in the operation of a usual corporation.
 
-Nervatura[ **API**](api) is a generic programming interface. Ensures direct access to Nervatura databases at database management level.
+The Nervatura service is small and fast. A single ~5 MB file/image contains all the necessary dependencies.
+The framework includes:
+- [**CLI API**](#cli-api) (command line interface)
+- standard HTTP [**RESTful API**](api) for client communication
+- HTTP/2-based [**gRPC API**](grpc) for server-side communication
+- JWT generation, external token validation, SSL/TLS support and other HTTP security [settings](#configuration-options)
+- built-in database drivers for postgres, mysql, sqlite databases
+- a basic report generation library for creating simple PDF documents (eg. order, invoice, etc.) 
+or CSV data files
+- sample report templates and [**REPORT EDITOR**](docs/editor) GUI
+- PWA [**CLIENT**](docs/) application and a basic [**ADMIN**](#admin-api-gui) interface
 
-Nervatura Report is a basic PDF generation library for creating simple documents (eg. order, invoice, etc.). For more information about the report template, see [**REPORT EDITOR**](docs/editor). Sample templates [**can be found here**](https://github.com/nervatura/report-templates/tree/master/templates). You can install the templates using the [**ADMIN**](#admin-api-gui) interface.
+The client and report interface supports [multilingualism](#customize-the-appearance). The framework can be easily extended with additional interfaces and functions in the [supported languages](https://grpc.io/docs/languages/): 
+C#, C++, Dart, Go, Java, Kotlin, Node, Objective-C, PHP, Python, Ruby
 
-The framework also includes a PWA [**CLIENT**](docs/) application.
+## Installation
 
-## Quick Start with Node.js
+**Docker** image:
+```
+$ docker pull nervatura/nervatura:latest
+```
 
-Nervatura Core Package:
-```
-$ npm install nervatura --save
-```
-Nervatura with Express Framework:
-```
-$ git clone https://github.com/nervatura/nervatura-express.git nervatura
-$ cd nervatura
-$ npm install
-```
-**The application uses environment variables to set configuration options.** It will be read from the app_dir/.env file (development mode). Set the environment variables as needed!<br />
-Other configuration files: app.yaml (App Engine), manifest.yml (IBM Cloud), node-settings.config (AWS) or Azure CLI.
-```
-$ npm run dev
-```
-and [http://localhost:8080/](http://localhost:8080/)
+**Snap** package (Linux daemon):
 
-## Quick Start with Go
-To install the package on your system, run
 ```
-$ go get github.com/nervatura/nervatura-go
+$ sudo snap install --beta nervatura
 ```
-Later, to receive updates, run
+
+Checking service status and last logs:
+
 ```
-$ go get -u -v github.com/nervatura/nervatura-go/...
+$ systemctl status -l snap.nervatura.nervatura.service
 ```
-Compile and run the demo/server/app.go file and open [http://localhost:8080/](http://localhost:8080/)
 
-More golang examples: test/api_test.go, test/nervastore_test.go, test/npi_test.go<br />
-Go documentation: [Nervatura Godoc](https://godoc.org/github.com/nervatura/nervatura-go)
+Default snap data and http.log path:  `/var/snap/nervatura/common`
 
-## Admin API GUI
+Via **NPM** (Linux and Windows x64):
+```
+$ npm install --save nervatura
+```
+```
+$ npm update nervatura
+```
+See [Node.js sample application](https://github.com/nervatura/nervatura-express)
 
-[**api**](api)**/database** - Create a new Nervatura database
+Prebuild binaries:
 
-Configure your API-KEY and database connection in your environment variables: *NT_API_KEY and NT_ALIAS_[ALIASNAME]*<br />
+[Linux and Windows x64](https://github.com/nervatura/nervatura-service/releases/latest)
+
+Other platforms:
+```
+$ git clone https://github.com/nervatura/nervatura-service.git
+$ cd nervatura-service
+$ CGO_ENABLED=0 GOOS=$(OS_NAME) GOARCH=$(ARCH_NAME) \
+  go build -tags "$(TAGS)" -ldflags="-w -s -X main.Version=$(VERSION)" \
+  -o $(APP_NAME) main.go
+```
+See more: [Building Applications in GoLang](https://golangdocs.com/building-applications-in-golang)
+
+## Configuration Options
+
+The application uses environment variables to set configuration options. It will be read from the [.env.example](https://github.com/nervatura/nervatura-service/blob/master/.env.example) file. Set the environment variables as needed!
+
+## Quick Start
+
+1. Create a Docker container and set some options
+```
+$ mkdir data
+$ docker run -i -t --rm --name nervatura \
+  -e NT_API_KEY=DEMO_API_KEY \
+  -p 5000:5000 -v "$(pwd)"/data:/data nervatura/nervatura:latest
+```
+2. Create a new demo database. In a new command window:
+```
+$ docker exec -i nervatura /nervatura \
+  -c DatabaseCreate -k DEMO_API_KEY \
+  -o "{\"database\":\"demo\",\"demo\":true}"
+```
+
+Snap command:
+```
+$ sudo NT_API_KEY=DEMO_API_KEY \
+  NT_ALIAS_DEMO="sqlite://file:/var/snap/nervatura/common/demo.db?cache=shared&mode=rwc" \
+  /snap/nervatura/current/nervatura -c DatabaseCreate \
+  -k DEMO_API_KEY -o "{\"database\":\"demo\",\"demo\":true}"
+```
+
+You can use the [**ADMIN GUI**](http://localhost:5000/admin/) Database section:
+
+API-KEY: **DEMO_API_KEY**<br />
+Alias name: **demo**<br />
+Demo database: **true**
+
+3. Login to the database: [**Nervatura Client**](http://localhost:5000/client/)
+
+Username: **admin**<br />
+Password: **Empty password: Please change after the first login!**<br />
+Database: **demo**
+
+## CLI API
+
+Full command line API. Program usage:
+```
+$ docker exec -i nervatura /nervatura -h
+```
+Without Docker:
+```
+$ ./nervatura -h
+```
+Example:
+```
+$ docker exec -i nervatura /nervatura \
+  -c UserLogin -o "{\"username\":\"admin\",\"database\":\"demo\"}"
+```
+For more examples, see [Node.js sample application](https://github.com/nervatura/nervatura-express)
+
+## Create a new Nervatura database
+
+Configure your API-KEY and database connection in your environment variables: 
+```NT_API_KEY``` and ```NT_ALIAS_[ALIASNAME]``` <br />
 Connection string form: *adapter://user:password@host/database*<br />
-Supported database adapters: *sqlite3, postgres, mysql, mssql*
+Supported database adapters: *sqlite3, postgres, mysql*
 
 For examples:
 - *NT_ALIAS_DEMO=sqlite3://data/database/demo.db*
 - *NT_ALIAS_PGDEMO=postgres://postgres:admin@localhost:5432/nervatura*
 - *NT_ALIAS_MYDEMO=mysql://root:admin@localhost:3306/nervatura*
-- *NT_ALIAS_MSDEMO=mssql://sa:admin@localhost:1433/nervatura*
-- App Engine:<br />
-  *NT_ALIAS_AEPG=postgres://[YOUR_SQL_USER]:[YOUR_SQL_PASSWORD]@/cloudsql/[YOUR_INSTANCE_CONNECTION_NAME]/[YOUR_SQL_DATABASE]*
-- Azure:<br />
-  *NT_ALIAS_AZMY=mysql://[ADMIN_NAME]@[SERVER_NAME]:[ADMIN_PASSWORD]@[SERVER_NAME].mysql.database.azure.com:3306/nervatura*<br />
-  *NT_ALIAS_AZPG=postgres://[ADMIN_NAME]@[SERVER_NAME]:[ADMIN_PASSWORD]@[SERVER_NAME].postgres.database.azure.com:5432/postgres*<br />
-  *NT_ALIAS_AZMS=mssql://[ADMIN_NAME]@[SERVER_NAME]:[ADMIN_PASSWORD]@[SERVER_NAME].database.windows.net:1433/nervatura*
 
-The SQLite databases are created automatically. Other types of databases must be created manually before. For testing you can fill in the database with some dummy data. If you don't need those later, then you can create a blank database again. **All data in the database will be destroyed!**
+Create a new database:
+```
+$ ./nervatura -c DatabaseCreate -k [YOUR_API_KEY] \
+  -o "{\"database\":\"[your_lowercase_alias_name]\",\"demo\":false}"
+```
+You can use the [**ADMIN GUI**](http://localhost:5000/admin/) Database section:
 
-[**api**](api)**/auth/login** - Login to the database
+API-KEY: **YOUR_API_KEY**<br />
+Alias name: **your_lowercase_alias_name**<br />
+Demo database: **false**
 
+The SQLite databases are created automatically. Other types of databases must be created manually before. For testing you can fill in the database with some dummy data (demo=true). If you don't need those later, then you can create a blank database again. **All data in the database will be destroyed!**
+
+Optional: Install Nervatura Report templates to the database
+- Login to the database: [**ADMIN GUI**](http://localhost:5000/admin/) <br />
 Username: **admin**<br />
-Password: **Empty password: Please change after the first login!**
+Password: **Empty password: Please change after the first login!**<br />
+Database: **your_lowercase_alias_name**
+- List reports: Returns all installable files from the ```NT_REPORT_DIR``` directory (empty value: all built-in Nervatura Report templates)
+- Install a report to the database
 
-The following operations are currently supported:
-- [**api**](api)**/auth/password** - User (*employee or customer*) password change.
-- [**api**](api)**/auth/refresh** - Refreshes JWT token.
-- [**api**](api)**/report/list** - Returns all installable files from the *NT_REPORT_DIR* directory (empty value: all available built-in Nervatura Reports)
-- [**api**](api)**/report/install** - Install a report to the database.
-- [**api**](api)**/report/delete** - Delete a report from the database.
+## Customize the appearance
 
+1. Nervatura Client language translation
+- Create a file based on the [client_config.json](https://github.com/nervatura/nervatura/tree/master/dist) file. All subtitles [can be found here](https://github.com/nervatura/nervatura-client/blob/dev/src/config/locales.js).
+- Set ```NT_CLIENT_CONFIG``` environment variable value to *YOUR_CLIENT_CONFIG_FILE_PATH*
+- Docker container: mount local folder to the container
+
+2. Nervatura Client custom remote functions: [**MENU SHORTCUTS**](docs/uimenu)
+
+3. Custom PDF Report font
+- Set ```NT_FONT_FAMILY``` environment variable value to *YOUR_FONT_FAMILY_NAME*
+- Set ```NT_FONT_DIR``` environment variable value to *YOUR_FONTS_PATH*
+- Valid font type and filename form: FAMILY_NAME-Regular.ttf, FAMILY_NAME-Italic.ttf, FAMILY_NAME-Bold.ttf, FAMILY_NAME-BoldItalic.ttf
+- Docker container: mount local folder to the container
+
+4. Modify installed Nervatura report definitions: [**REPORT EDITOR**](docs/editor)
+
+## Bearer Authentication
+
+Environment variables: [.env.example](https://github.com/nervatura/nervatura-service/blob/master/.env.example)<br />
+User authentication is based on the *employee.username* or *customer.custnumber* fields. The identifier can be the following types: username (employee), email, phone number (customer).<br />
+Passwords are not stored in the employee or customer tables. They are anonymized and stored in a unique table with [strong encryption](https://github.com/P-H-C/phc-winner-argon2).
+
+External authorization: ```NT_TOKEN_PUBLIC_KEY_TYPE```, ```NT_TOKEN_PUBLIC_KEY_URL```
 
 ## Other Recipes
 
-### Bearer Authentication
-
-Environment variables: *NT_TOKEN_ISS, NT_TOKEN_KEY, NT_TOKEN_EXP*<br />
-User authentication is based on the *employee.username* or *customer.custnumber* fields. The identifier can be the following types: username (employee), email, phone number (customer).<br />
-Passwords are not stored in the employee or customer tables. They are anonymized and stored in a unique table with [strong encryption](https://github.com/P-H-C/phc-winner-argon2) (*NT_HASHTABLE*).
-
-External authorization<br />
-Built-in JWK x509 Endpoint verification (see more [Firebase token](https://firebase.google.com/docs/auth/admin/verify-id-tokens)). x509 public keys URL environment variable: *NT_JWK_X509*
-
-### Customize the appearance
-
-You can change the following environment setting value: *NT_START_PAGE*<br />
-Values: default (Nervatura Docs startpage) or static (custom modification in the www directory). Subdomains: see www/vhost.json file.
-
-### Sending Emails
-
-Configure your email settings in your environment variables:
-- SMTP settings: *NT_SMTP_HOST, NT_SMTP_PORT, NT_SMTP_SECURE, NT_SMTP_USER, NT_SMTP_PASSWORD*
-```
-$ npm install nodemailer --save
-```
-- Mailjet settings: *NT_MJ_APIKEY_PUBLIC, NT_MJ_APIKEY_PRIVATE*
-```
-$ npm install node-mailjet --save
-```
-
-For API examples, see [**api**](api)**/function** (Call a server-side function)
-
-### Server-side printing (node.js)
-
-UNIX-like operating systems: CUPS and node-printer
-```
-$ npm install printer --save
-```
-Google Cloud Print: [CUPS-Cloud-Print](https://github.com/simoncadman/CUPS-Cloud-Print)
-
-For API examples, see [**api**](api)**/function** (Call a server-side function)
+- [![GoDoc](https://godoc.org/github.com/nervatura/nervatura-service?status.svg)](https://godoc.org/github.com/nervatura/nervatura-service)
+- [gRPC API proto file](https://github.com/nervatura/nervatura/tree/master/dist)
+- [Report templates files](https://github.com/nervatura/nervatura-service/tree/master/pkg/utils/static/templates)
+- [Node.js sample application](https://github.com/nervatura/nervatura-express)

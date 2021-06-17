@@ -103,7 +103,7 @@ The objects of rights management, logging and other options:<br />
 These objects **are not part of the object model**, they are not needed for recording the workflow data. However certain applications to ensure their own operation might require data storage possibilities.
 
 Storage of data of Reports:<br />
-**UI_REPORT, UI_REPORTSOURCES, UI_REPORTFIELDS**
+**UI_REPORT**
 
 Settings of user interfaces:<br />
 **UI_MENU, UI_MENUFIELDS**
@@ -112,7 +112,7 @@ User rights, settings:<br />
 **UI_AUDIT, UI_USERCONFIG**
 
 Regional settings:<br />
-**UI_LANGUAGE, UI_MESSAGE**
+**UI_MESSAGE**
 
 Printing:<br />
 **UI_PRINTQUEUE**
@@ -137,10 +137,10 @@ Printing:<br />
 
 | Level | |	Objects |
 |---|---|---|
-| level 1 |	no external link |	UI_MENU, UI_LANGUAGE |
+| level 1 |	no external link |	UI_MENU |
 | level 2a |	link to <= level 1 |	UI_MESSAGE |
 | level 2b |	link to <= NOM level 1 |	UI_REPORT, UI_AUDIT |
-| level 3 |	link to <= level 2b |	UI_MENUFIELDS, UI_REPORTFIELDS, UI_REPORTSOURCES |
+| level 3 |	link to <= level 2b |	UI_MENUFIELDS |
 | level 4 |	link to <= NOM level 2 |	UI_USERCONFIG, UI_PRINTQUEUE |
 
 ## Objects relations

@@ -9,12 +9,12 @@
 :root {
   --ifm-font-size-base: 15px;
   --ifm-line-height-base: 1.4;
-  --ifm-color: #444444;
+  /*--ifm-color: #444444;
   --ifm-background-color: #f5f5f5;
   --ifm-background-surface-color: #ffffff;
   --ifm-code-color: #ffffff;
   --ifm-pre-background: none;
-  /*--ifm-button-border-color: #444444;
+  --ifm-button-border-color: #444444;
   --ifm-button-border-color: #444444;
   
   --ifm-color-primary: orange;
@@ -29,9 +29,11 @@
   /*text-align: justify;*/
 }
 
+/*
 .docusaurus-highlight-code-line {
   background-color: rgb(72, 77, 91);
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
 }
+*/

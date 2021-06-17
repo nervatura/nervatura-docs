@@ -1,15 +1,8 @@
 openapi: 3.0.2
 info:
-  title: Nervatura OPEN API
-  version: 1.0.0
-  description: >-
-    The **Nervatura REST API** is based on **Nervatura Object Model**
-    specification. Ensures direct  access to Nervatura databases at management
-    level. With its help you can send and receive data without  knowing the
-    exact location and type of the database but you have the possibility also to
-    use  database-specific features.
-
-      The API also has built-in support for:
+  title: Nervatura HTTP REST API
+  description: >- 
+    The API also has built-in support for:
      - `/auth` Authentication and authorization methods
      
      
@@ -49,24 +42,13 @@ info:
           
         * `value` Field value
         
-    For more examples, see the description or the
-    [demo.js](https://raw.githubusercontent.com/nervatura/nervatura/master/lib/demo.js)
-    and
-    [demo.go](https://raw.githubusercontent.com/nervatura/nervatura-go/master/demo.go)
-    files. All examples can be tested in the demo database!
-  termsOfService: 'https://nervatura.com/#/terms'
-  contact:
-    email: info@nervatura.com
-  license:
-    name: LGPLv3 License
-    url: 'http://www.gnu.org/licenses/lgpl-3.0.html'
+    All examples can be tested in the demo database!
+
 externalDocs:
   description: Find out more about Nervatura
   url: 'https://nervatura.com'
 servers:
   - url: 'http://localhost:8080/api'
-security:
-  - bearerAuth: []
 tags:
   - name: auth
   - name: address
@@ -95,14 +77,11 @@ tags:
   - name: tool
   - name: trans
   - name: ui_audit
-  - name: ui_language
   - name: ui_menu
   - name: ui_menufields
   - name: ui_message
   - name: ui_printqueue
   - name: ui_report
-  - name: ui_reportfields
-  - name: ui_reportsources
   - name: ui_userconfig
   - name: report
     description: >-
@@ -119,7 +98,7 @@ paths:
       summary: Logs in user by username and password
       description: >-
         Employee `username` or Customer `custnumber` (email or phone number).
-        Returns a access token and the type of database.
+        Returns a access token, the type of database and the service version.
       requestBody:
         required: true
         content:
@@ -151,6 +130,8 @@ paths:
                   token:
                     type: string
                   engine:
+                    type: string
+                  version:
                     type: string
         '400':
           $ref: '#/components/responses/BadRequest'
@@ -4433,141 +4414,6 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
-  /ui_language:
-    post:
-      tags:
-        - ui_language
-      security:
-        - BearerAuth: []
-      summary: Add/update one or more items
-      description: >-
-        If the ID (or Key) value is missing, it creates a new item. Returns the
-        all new/updated IDs values.
-
-          **You can't use Metadata!**
-
-        The **UiLanguage Key** value is the `lang` field. Unique ID.
-                
-        **Examples:**
-         * Create a new item by IDs***
-
-        *** *You can only run once!*
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                allOf:
-                  - $ref: '#/components/schemas/UiLanguage'
-                  - $ref: '#/components/schemas/Metafields'
-            example:
-              - lang: es
-                description: Español
-      responses:
-        '200':
-          $ref: '#/components/responses/200IDs'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '415':
-          $ref: '#/components/responses/Unsupported'
-    get:
-      tags:
-        - ui_language
-      security:
-        - BearerAuth: []
-      summary: Find data by Filter
-      description: |-
-        Returns one or more Patterns
-
-          **Example:**
-          
-            /api/ui_language?filter=lang;==;es
-      parameters:
-        - in: query
-          name: filter
-          required: true
-          schema:
-            type: array
-            items:
-              type: string
-          style: pipeDelimited
-          explode: false
-          allowReserved: true
-          example:
-            - lang;==;es
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UiLanguage'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-    delete:
-      tags:
-        - ui_language
-      security:
-        - BearerAuth: []
-      summary: Delete an item
-      description: |-
-        Does not return content.
-
-          **Examples:**
-          
-          Delete data by ID:
-
-          `/api/ui_language?id=4`
-          
-          Delete data by Key:
-
-          `/api/ui_language?key=es`
-      parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/Key'
-      responses:
-        '204':
-          $ref: '#/components/responses/OKDelete'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-  '/ui_language/{IDs}':
-    get:
-      tags:
-        - ui_language
-      security:
-        - BearerAuth: []
-      summary: Find data by IDs
-      description: |-
-        Returns one or more UiLanguages by IDs
-
-          **Examples:**
-
-          `/api/ui_language/4,6`
-      parameters:
-        - $ref: '#/components/parameters/IDs'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UiLanguage'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
   /ui_menu:
     post:
       tags:
@@ -5286,302 +5132,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/UiReport'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-  /ui_reportfields:
-    post:
-      tags:
-        - ui_reportfields
-      security:
-        - BearerAuth: []
-      summary: Add/update one or more items
-      description: >-
-        If the ID (or Key) value is missing, it creates a new item. Returns the
-        all new/updated IDs values.
-
-          **You can't use Metadata!**
-
-        The **UiReportfields Key** value is a generated unique key identifier:
-        `{reportkey}~{fieldname}`. For example: `ntr_custpos_en~posdate`
-
-          **Other Key->ID Options:**.
-          
-          `report_id` Valid values: *{reportkey}*
-          
-          `fieldtype` Valid values: *bool, date, integer, float, string*
-          
-          `wheretype` Valid values: all groupvalue from GROUPS, where groupname equal wheretype
-                
-        **Examples:**
-         * Create a new item by Keys***
-         * Update an item by Keys
-
-        *** *You can only run once!*
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                allOf:
-                  - $ref: '#/components/schemas/UiReportfields'
-                  - $ref: '#/components/schemas/Metafields'
-            example:
-              - fieldname: transdate_eq
-                description: Inv. Date ==
-                orderby: 7
-                sqlstr: t.transdate = @transdate_eq
-                parameter: 0
-                keys:
-                  report_id: ntr_custpos_en
-                  fieldtype: date
-                  wheretype: where
-              - defvalue: EUR
-                keys:
-                  id: ntr_custpos_en~curr
-      responses:
-        '200':
-          $ref: '#/components/responses/200IDs'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '415':
-          $ref: '#/components/responses/Unsupported'
-    get:
-      tags:
-        - ui_reportfields
-      security:
-        - BearerAuth: []
-      summary: Find data by Filter
-      description: |-
-        Returns one or more UiReportfields
-
-          **Example:**
-          
-            /api/ui_reportfields?filter=report_id;==;5
-      parameters:
-        - in: query
-          name: filter
-          required: true
-          schema:
-            type: array
-            items:
-              type: string
-          style: pipeDelimited
-          explode: false
-          allowReserved: true
-          example:
-            - report_id;==;5
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UiReportfields'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-    delete:
-      tags:
-        - ui_reportfields
-      security:
-        - BearerAuth: []
-      summary: Delete an item
-      description: |-
-        Does not return content.
-
-          **Examples:**
-          
-          Delete data by ID:
-
-          `/api/ui_reportfields?id=4`
-          
-          Delete data by Key:
-
-          `/api/ui_reportfields?key=ntr_custpos_en~curr`
-      parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/Key'
-      responses:
-        '204':
-          $ref: '#/components/responses/OKDelete'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-  '/ui_reportfields/{IDs}':
-    get:
-      tags:
-        - ui_reportfields
-      security:
-        - BearerAuth: []
-      summary: Find data by IDs
-      description: |-
-        Returns one or more UiReportfields by IDs
-
-          **Examples:**
-
-          `/api/ui_reportfields/4,6`
-      parameters:
-        - $ref: '#/components/parameters/IDs'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UiReportfields'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-  /ui_reportsources:
-    post:
-      tags:
-        - ui_reportsources
-      security:
-        - BearerAuth: []
-      summary: Add/update one or more items
-      description: >-
-        If the ID (or Key) value is missing, it creates a new item. Returns the
-        all new/updated IDs values.
-
-          **You can't use Metadata!**
-
-        The **UiReportsources Key** value is a generated unique key identifier:
-        `{reportkey}~{dataset}`. For example: `ntr_custpos_en~customers`
-
-          **Other Key->ID Options:**.
-          
-          `report_id` Valid values: *{reportkey}*
-                
-        **Examples:**
-         * Create a new item by IDs***
-
-        *** *You can only run once!*
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                allOf:
-                  - $ref: '#/components/schemas/UiReportsources'
-                  - $ref: '#/components/schemas/Metafields'
-            example:
-              - report_id: 5
-                dataset: example
-                sqlstr: select * from ...
-      responses:
-        '200':
-          $ref: '#/components/responses/200IDs'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '415':
-          $ref: '#/components/responses/Unsupported'
-    get:
-      tags:
-        - ui_reportsources
-      security:
-        - BearerAuth: []
-      summary: Find data by Filter
-      description: |-
-        Returns one or more UiReportsources
-
-          **Example:**
-          
-            /api/ui_reportsources?filter=report_id;==;5
-      parameters:
-        - in: query
-          name: filter
-          required: true
-          schema:
-            type: array
-            items:
-              type: string
-          style: pipeDelimited
-          explode: false
-          allowReserved: true
-          example:
-            - report_id;==;5
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UiReportsources'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-    delete:
-      tags:
-        - ui_reportsources
-      security:
-        - BearerAuth: []
-      summary: Delete an item
-      description: |-
-        Does not return content.
-
-          **Examples:**
-          
-          Delete data by ID:
-
-          `/api/ui_reportsources?id=4`
-          
-          Delete data by Key:
-
-          `/api/ui_reportsources?key=ntr_custpos_en~customers`
-      parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/Key'
-      responses:
-        '204':
-          $ref: '#/components/responses/OKDelete'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-  '/ui_reportsources/{IDs}':
-    get:
-      tags:
-        - ui_reportsources
-      security:
-        - BearerAuth: []
-      summary: Find data by IDs
-      description: |-
-        Returns one or more UiReportsources by IDs
-
-          **Examples:**
-
-          `/api/ui_reportsources/4,6`
-      parameters:
-        - $ref: '#/components/parameters/IDs'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UiReportsources'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -8530,39 +8080,6 @@ components:
                 - all
       xml:
         name: ui_audit
-    UiLanguage:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          uniqueItems: true
-          xml:
-            attribute: true
-        lang:
-          type: string
-          maxLength: 2
-          minLength: 2
-          nullable: false
-          uniqueItems: true
-          xml:
-            attribute: true
-        description:
-          type: string
-          maxLength: 150
-          nullable: true
-          xml:
-            attribute: true
-        keys:
-          type: object
-          writeOnly: true
-          properties:
-            id:
-              type: string
-              maxLength: 150
-              description: lang
-      xml:
-        name: ui_language
     UiMenu:
       type: object
       properties:
@@ -8585,6 +8102,12 @@ components:
           nullable: false
           xml:
             attribute: true
+        method:
+          type: string
+          maxLength: 150
+          description: 'all groupvalue from GROUPS, where groupname equal method'
+          xml:
+            attribute: true
         modul:
           type: string
           maxLength: 255
@@ -8601,16 +8124,6 @@ components:
           type: string
           maxLength: 255
           nullable: false
-          xml:
-            attribute: true
-        url:
-          type: integer
-          enum:
-            - 0
-            - 1
-          nullable: false
-          default: 0
-          description: Boolean.
           xml:
             attribute: true
         address:
@@ -8880,153 +8393,6 @@ components:
               description: 'all groupvalue from GROUPS, where groupname equal filetype'
       xml:
         name: ui_report
-    UiReportfields:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          uniqueItems: true
-          xml:
-            attribute: true
-        report_id:
-          type: integer
-          format: int64
-          nullable: true
-          description: Reference to ui_report.id
-          xml:
-            attribute: true
-        fieldname:
-          type: string
-          maxLength: 150
-          nullable: false
-          xml:
-            attribute: true
-        fieldtype:
-          type: integer
-          format: int64
-          nullable: false
-          description: Reference to groups.id (only where groupname = 'fieldtype')
-          xml:
-            attribute: true
-        wheretype:
-          type: integer
-          format: int64
-          nullable: false
-          description: Reference to groups.id (only where groupname = 'wheretype')
-          xml:
-            attribute: true
-        description:
-          type: string
-          maxLength: 255
-          nullable: true
-          xml:
-            attribute: true
-        orderby:
-          type: integer
-          nullable: false
-          default: 0
-          xml:
-            attribute: true
-        sqlstr:
-          type: string
-          nullable: true
-          xml:
-            attribute: true
-        parameter:
-          type: integer
-          enum:
-            - 0
-            - 1
-          nullable: false
-          default: 0
-          description: Boolean.
-          xml:
-            attribute: true
-        dataset:
-          type: string
-          maxLength: 150
-          nullable: true
-          xml:
-            attribute: true
-        defvalue:
-          type: string
-          maxLength: 255
-          nullable: true
-          xml:
-            attribute: true
-        valuelist:
-          type: string
-          nullable: true
-          xml:
-            attribute: true
-        keys:
-          type: object
-          writeOnly: true
-          properties:
-            id:
-              type: string
-              maxLength: 150
-              description: '{reportkey}~{fieldname}'
-            report_id:
-              type: string
-              maxLength: 150
-              description: reportkey
-            fieldtype:
-              type: string
-              enum:
-                - bool
-                - date
-                - integer
-                - float
-                - string
-            wheretype:
-              type: string
-              maxLength: 150
-              description: 'all groupvalue from GROUPS, where groupname equal wheretype'
-      xml:
-        name: ui_reportfields
-    UiReportsources:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          uniqueItems: true
-          xml:
-            attribute: true
-        report_id:
-          type: integer
-          format: int64
-          nullable: true
-          description: Reference to ui_report.id
-          xml:
-            attribute: true
-        dataset:
-          type: string
-          maxLength: 150
-          nullable: false
-          xml:
-            attribute: true
-        sqlstr:
-          type: string
-          nullable: true
-          xml:
-            attribute: true
-        keys:
-          type: object
-          writeOnly: true
-          properties:
-            id:
-              type: string
-              maxLength: 150
-              description: '{reportkey}~{dataset}'
-            report_id:
-              type: string
-              maxLength: 150
-              description: reportkey
-      xml:
-        name: ui_reportsources
     UiUserconfig:
       type: object
       properties:

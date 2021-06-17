@@ -14,7 +14,11 @@
 }
 
 .paypal {
-  text-align: right;
+  text-align: center;
+}
+
+.logo {
+  max-width: 110px;
 }
 
 .section {

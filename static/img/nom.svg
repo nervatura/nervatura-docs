@@ -91,17 +91,14 @@
     <g>
       <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #800080" x="690.8" y="224.55" width="161" height="28"/>
       <text font-size="16" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="771.3" y="243.402">USER INTERFACE</text>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #800080" x="690.8" y="252.55" width="161" height="164"/>
+      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #800080" x="690.8" y="252.55" width="161" height="116"/>
       <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="266.431"> UI_REPORT</text>
-      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="282.431"> UI_REPORTSOURCES</text>
-      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="298.431"> UI_REPORTFIELDS</text>
-      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="314.431"> UI_MENU</text>
-      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="330.431"> UI_MENUFIELDS</text>
-      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="346.431"> UI_AUDIT</text>
-      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="362.431"> UI_USERCONFIG</text>
-      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="378.431"> UI_LANGUAGE</text>
-      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="394.431"> UI_MESSAGE</text>
-      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="410.431"> UI_PRINTQUEUE</text>
+      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="282.431"> UI_MENU</text>
+      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="298.431"> UI_MENUFIELDS</text>
+      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="314.431"> UI_AUDIT</text>
+      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="330.431"> UI_USERCONFIG</text>
+      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="346.431"> UI_MESSAGE</text>
+      <text xml:space="preserve" font-size="12.8" style="fill: #7f7f7f; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="693.8" y="362.431"> UI_PRINTQUEUE</text>
     </g>
   </g>
 </svg>

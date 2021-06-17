@@ -28,6 +28,11 @@ module.exports = {
           label: 'API',
         },
         {
+          to: 'grpc',
+          label: 'GRPC',
+          position: 'left',
+        },
+        {
           to: 'docs/',
           activeBasePath: 'docs',
           label: 'CLIENT',
@@ -51,6 +56,17 @@ module.exports = {
     },
   },
   presets: [
+    [
+      "redocusaurus",
+      {
+        specs: [
+          {
+            routePath: "/api/",
+            spec: "src/config/openapi.yaml",
+          },
+        ],
+      },
+    ],
     [
       '@docusaurus/preset-classic',
       {
