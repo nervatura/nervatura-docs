@@ -59,12 +59,12 @@ C#, C++, Dart, Go, Java, Kotlin, Node, Objective-C, PHP, Python, Ruby
 
 ## Installation
 
-**Docker** image:
+### **Docker** image
 ```
 $ docker pull nervatura/nervatura:latest
 ```
 
-**Snap** package (Linux daemon):
+### **Snap** package (Linux daemon)
 
 ```
 $ sudo snap install --beta nervatura
@@ -78,20 +78,19 @@ $ systemctl status -l snap.nervatura.nervatura.service
 
 Default snap data and http.log path:  `/var/snap/nervatura/common`
 
-Via **NPM** (Linux and Windows x64):
+### Node.js **NPM**
 ```
 $ npm install --save nervatura
 ```
 ```
 $ npm update nervatura
 ```
-See [Node.js sample application](https://github.com/nervatura/nervatura-express)
 
-Prebuild binaries:
+### Prebuild binaries
 
 [Linux and Windows x64](https://github.com/nervatura/nervatura-service/releases/latest)
 
-Other platforms:
+### Other platforms
 ```
 $ git clone https://github.com/nervatura/nervatura-service.git
 $ cd nervatura-service
@@ -107,21 +106,23 @@ The application uses environment variables to set configuration options. It will
 
 ## Quick Start
 
-1. Create a Docker container and set some options
+1. Create a new demo database
+### Docker
+
+Create a Docker container and set some options
 ```
 $ mkdir data
 $ docker run -i -t --rm --name nervatura \
   -e NT_API_KEY=DEMO_API_KEY \
   -p 5000:5000 -v "$(pwd)"/data:/data nervatura/nervatura:latest
 ```
-2. Create a new demo database. In a new command window:
+In a new command window:
 ```
 $ docker exec -i nervatura /nervatura \
   -c DatabaseCreate -k DEMO_API_KEY \
   -o "{\"database\":\"demo\",\"demo\":true}"
 ```
-
-Snap command:
+### Snap
 ```
 $ sudo NT_API_KEY=DEMO_API_KEY \
   NT_ALIAS_DEMO="sqlite://file:/var/snap/nervatura/common/demo.db?cache=shared&mode=rwc" \
@@ -129,13 +130,38 @@ $ sudo NT_API_KEY=DEMO_API_KEY \
   -k DEMO_API_KEY -o "{\"database\":\"demo\",\"demo\":true}"
 ```
 
+### Windows
+
+Open a PowerShell and set the (temporary) variables:
+```
+$env:NT_API_KEY="DEMO_API_KEY"
+$env:NT_ALIAS_DEMO="sqlite://file:///C:/YOUR_DATA_PATH/demo.db"
+```
+The "C:/YOUR_DATA_PATH" is an existing and writable directory, e.g. `$env:NT_ALIAS_DEMO="sqlite://file:///C:/mydata/demo.db"` The SQLite database are created automatically.
+
+Launch nervatura CLI (in the same command window!), and create a database:
+```
+nervatura -c DatabaseCreate -k DEMO_API_KEY -o '{\"database\":\"demo\",\"demo\":true}'
+```
+
+Launch nervatura server (in the same command window!):
+```
+nervatura
+```
+Of course, the environment variables can also be set permanently (see more SystemPropertiesAdvanced.exe). In this case, the server can be started from anywhere, not just in the session.
+
+### Node.js
+
+See [Node.js sample application](https://github.com/nervatura/nervatura-express)
+### Admin GUI
+
 You can use the [**ADMIN GUI**](http://localhost:5000/admin/) Database section:
 
 API-KEY: **DEMO_API_KEY**<br />
 Alias name: **demo**<br />
 Demo database: **true**
 
-3. Login to the database: [**Nervatura Client**](http://localhost:5000/client/)
+2. Login to the database: [**Nervatura Client**](http://localhost:5000/client/)
 
 Username: **admin**<br />
 Password: **Empty password: Please change after the first login!**<br />
