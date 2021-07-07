@@ -1,6 +1,7 @@
 openapi: 3.0.2
 info:
   title: Nervatura HTTP REST API
+  version: ""
   description: >- 
     The API also has built-in support for:
      - `/auth` Authentication and authorization methods
@@ -48,7 +49,7 @@ externalDocs:
   description: Find out more about Nervatura
   url: 'https://nervatura.com'
 servers:
-  - url: 'http://localhost:8080/api'
+  - url: 'http://localhost:5000/api'
 tags:
   - name: auth
   - name: address
@@ -5289,7 +5290,7 @@ paths:
         - BearerAuth: []
       summary: Create and download a Nervatura Report
       description: |-
-        Server-side PDF and Excel report generation
+        Server-side PDF and CSV data generation
 
           **Examples:**
           
@@ -5303,15 +5304,10 @@ paths:
             `/api/report?reportkey=ntr_invoice_en&output=xml
             nervatype=trans&refnumber=DMINV/00001`
           
-          JSON data for client-side PDF generation:
+          CSV data report:
           
-            `/api/report?reportkey=ntr_invoice_en&output=data
-            nervatype=trans&refnumber=DMINV/00001`
-          
-          Excel report:
-          
-            `/api/report?reportkey=xls_vat_en
-            &filters[date_from]=2014-01-01&filters[date_to]=2019-01-01&filters[curr]=EUR`
+            `/api/report?reportkey=csv_vat_en
+            &filters[date_from]=2014-01-01&filters[date_to]=2022-01-01&filters[curr]=EUR`
       parameters:
         - in: query
           name: reportkey
@@ -5549,14 +5545,6 @@ paths:
             `{ "key": "nextNumber", "values": { "numberkey": "custnumber", "step": true, "insert_key": false }}`
           
           Example result: "CUS/2016/00005"
-          
-          ***Server-side printing(ui_printqueue rows):***
-          
-          printQueue*(printer::String, items::Array, orientation::String, size::String)*
-          
-            `{ "key": "printQueue", "values": { "printer": "tool_serial", "items": [12,14,15], "orientation":"p", "size":"a4" }`
-          
-          Example result: true
           
           ***Email sending:***
           

@@ -153,6 +153,12 @@ Of course, the environment variables can also be set permanently (see more Syste
 ### Node.js
 
 See [Node.js sample application](https://github.com/nervatura/nervatura-express)
+
+### Python
+
+[Python gRPC packages](https://pypi.org/project/nervatura/)
+
+See [Python sample application](https://github.com/nervatura/nervatura-fastapi)
 ### Admin GUI
 
 You can use the [**ADMIN GUI**](http://localhost:5000/admin/) Database section:
@@ -182,7 +188,9 @@ Example:
 $ docker exec -i nervatura /nervatura \
   -c UserLogin -o "{\"username\":\"admin\",\"database\":\"demo\"}"
 ```
-For more examples, see [Node.js sample application](https://github.com/nervatura/nervatura-express)
+For more examples, see 
+- [Node.js sample application](https://github.com/nervatura/nervatura-express)
+- [Python sample application](https://github.com/nervatura/nervatura-fastapi)
 
 ## Create a new Nervatura database
 
@@ -246,5 +254,7 @@ External authorization: ```NT_TOKEN_PUBLIC_KEY_TYPE```, ```NT_TOKEN_PUBLIC_KEY_U
 
 - [![GoDoc](https://godoc.org/github.com/nervatura/nervatura-service?status.svg)](https://godoc.org/github.com/nervatura/nervatura-service)
 - [gRPC API proto file](https://github.com/nervatura/nervatura/tree/master/dist)
+- [Python gRPC packages](https://pypi.org/project/nervatura/)
 - [Report templates files](https://github.com/nervatura/nervatura-service/tree/master/pkg/utils/static/templates)
 - [Node.js sample application](https://github.com/nervatura/nervatura-express)
+- [Python sample application](https://github.com/nervatura/nervatura-fastapi)
